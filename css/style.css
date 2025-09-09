@@ -19,8 +19,8 @@ main {
 
 
 header {
-  background: teal;        
-  color: tan;          
+  background: linear-gradient(to right, midnightblue, navy);  
+  color: beige;         
   padding: 16px 32px;
   font-weight: bold;
 }
@@ -34,7 +34,7 @@ header {
 .navbar .logo {
   font-size: 24px;
   font-weight: bold;
-  color: tan         
+  color: beige;
 }
 
 .nav-links {
@@ -44,7 +44,7 @@ header {
 }
 
 .nav-links a {
-  color: tan;          
+  color: beige;
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
@@ -52,9 +52,8 @@ header {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: goldenrod;            
+  color: gold;
 }
-
 
 .hero {
   flex: 1;
@@ -62,8 +61,8 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: tan;
-  color: black;
+  background: beige;  
+  color: navy;
   text-align: center;
   padding: 32px;
 }
@@ -81,7 +80,7 @@ header {
 .hero-buttons .btn {
   padding: 12px 24px;
   margin: 0 8px;
-  background: teal;     
+  background: navy;     
   color: beige;
   border: none;
   border-radius: 8px;
@@ -91,65 +90,58 @@ header {
 }
 
 .hero-buttons .btn:hover {
-  background: goldenrod;        
+  background: goldenrod;
   color: white;
 }
 
 .btn-secondary {
   background: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid navy;
+  color: navy;
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: midnightblue;
+  background: navy;
+  color: white;
 }
-
 
 footer {
   text-align: center;
   padding: 16px;
-  background: teal;
+  background: linear-gradient(to right, navy, midnightblue); /* deeper blue */
   color: burlywood;
   margin-top: auto;
 }
+
 .tagline {
   font-size: 18px;
   font-weight: bold;
-  color: teal;
+  color: navy;
   margin-bottom: 12px;
   display: block;
 }
+
 .motto {
   text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-  color: lightgray;
-  margin-top: 8px;
-}
-.logo-box {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;  
-}
-
-.logo {
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 32px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: midnightblue; 
-  text-transform: uppercase;
-}
-
-.motto {
   font-size: 14px;
   font-weight: bold;
   font-style: italic;
   letter-spacing: 1px;
-  color: darkslategray;  
-  margin-top: 4px;
+  color: white;
+  margin-top: 8px;
 }
 
+.logo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.logo {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: navy;
+  text-transform: uppercase;
+}
