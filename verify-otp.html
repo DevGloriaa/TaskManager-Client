@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="css/verify-otp.css">
+</head>
+<body>
+    <div class="container">
+        <h2>OTP Verification</h2>
+        <p>Enter the OTP sent to your email</p>
+        <form id="verifyForm">
+            <div class="form-group">
+                <label for="otp">OTP Code</label>
+                <input type="text" id="otp" required>
+            </div>
+            <button type="submit" class="btn">Verify OTP</button>
+        </form>
+        <p class="resend">Didn't receive OTP? <span id="resendOtp">Resend</span></p>
+        <p id="message"></p>
+    </div>
+
+    <script src="js/verify-otp.js"></script>
+</body>
+</html>

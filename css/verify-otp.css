@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, lightblue, navy);
+}
+
+.container {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.container h2 {
+    color: navy;
+    margin-bottom: 16px;
+}
+
+.container p {
+    margin-bottom: 24px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: navy;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid navy;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: gold;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: navy;
+    color: beige;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: gold;
+    color: white;
+}
+
+.resend {
+    margin-top: 16px;
+    font-size: 14px;
+    color: navy;
+}
+
+#resendOtp {
+    color: goldenrod;
+    cursor: pointer;
+    font-weight: bold;
+}
+#resendOtp:hover{
+  color:black;
+}
+
+#message {
+    margin-top: 16px;
+    font-size: 14px;
+    color: green;
+}

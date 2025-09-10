@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register - Task Manager</title>
   <link rel="stylesheet" href="css/register.css">
-  </head>
+</head>
 <body>
   <div class="container">
     <h2>Create Account</h2>
-    <form>
+    <form id="registerForm">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required />
@@ -23,6 +23,7 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required />
+        <button type="button" id="togglePassword" class="show-password">Show</button>
       </div>
 
       <button type="submit" class="btn">Register</button>
@@ -32,5 +33,7 @@
       Already have an account? <a href="login.html">Login</a>
     </div>
   </div>
+
+  <script src="js/register.js"></script>
 </body>
 </html>
