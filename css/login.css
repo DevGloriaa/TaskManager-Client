@@ -112,3 +112,27 @@ input:focus {
     transform: translateY(0);
   }
 }
+#message {
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#message.show {
+  opacity: 1;
+}
+
+#message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+#message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
