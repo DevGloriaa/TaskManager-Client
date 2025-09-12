@@ -40,8 +40,35 @@ document.addEventListener("DOMContentLoaded", () => {
         <p>${task.description || ""}</p>
         <p><strong>Due:</strong> ${task.dueDate || "No date"}</p>
         <span class="priority-${task.priority.toLowerCase()}">${task.priority}</span>
+        ${
+          task.completed
+            ? `<span class="completed-badge">Completed</span>`
+            : `<button class="complete-btn" data-id="${task.id}">Mark as Completed</button>`
+        }
       `;
       taskList.appendChild(card);
+    });
+
+    
+    document.querySelectorAll(".complete-btn").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const taskId = btn.getAttribute("data-id");
+        try {
+          const res = await fetch(`http://localhost:8081/tasks/${taskId}/complete`, {
+            method: "PATCH",
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          if (res.ok) {
+            loadTasks();
+          } else if (res.status === 403) {
+            console.error("Forbidden: You can only complete your own tasks.");
+          } else {
+            console.error("Error completing task");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+        }
+      });
     });
   }
 

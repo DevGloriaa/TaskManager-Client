@@ -1,24 +1,25 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
+  margin: 0px;
   background: aliceblue;
-  color: #333;
+  color: #333333;
   overflow-x: hidden;
 }
+
 .header {
   background: steelblue;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 24px; /* thinner header */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px 24px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .brand {
   font-size: 20px;
   font-weight: bold;
-  margin: 0;
+  margin: 0px;
 }
 
 .slogan {
@@ -42,8 +43,6 @@ body {
   background: darkred;
 }
 
-
-
 .main-content {
   padding: 30px 40px;
   max-width: 1200px;
@@ -61,17 +60,29 @@ body {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .task-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.priority-low { background: lightgreen; padding: 5px 10px; border-radius: 6px; }
-.priority-medium { background: gold; padding: 5px 10px; border-radius: 6px; }
-.priority-high { background: lightcoral; padding: 5px 10px; border-radius: 6px; }
+.priority-low {
+  background: lightgreen;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+.priority-medium {
+  background: gold;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+.priority-high {
+  background: lightcoral;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
 
 .fab {
   position: fixed;
@@ -85,7 +96,7 @@ body {
   border-radius: 50%;
   font-size: 30px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 .fab:hover {
   background: seagreen;
@@ -93,8 +104,8 @@ body {
 
 .modal {
   position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
+  inset: 0px;
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,24 +123,24 @@ body {
   border-radius: 14px;
   width: 420px;
   max-width: 95%;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
   animation: slideDown 0.4s ease;
   box-sizing: border-box;
 }
 
 .modal-content h2 {
-  margin-top: 0;
+  margin-top: 0px;
   margin-bottom: 15px;
   font-size: 20px;
-  color: #222;
-  border-bottom: 1px solid #eee;
+  color: #222222;
+  border-bottom: 1px solid #eeeeee;
   padding-bottom: 8px;
 }
 .close {
   float: right;
   font-size: 22px;
   cursor: pointer;
-  color: #888;
+  color: #888888;
 }
 .close:hover {
   color: black;
@@ -140,8 +151,8 @@ body {
 .modal-content select {
   width: 100%;
   padding: 12px 14px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
+  margin: 10px 0px;
+  border: 1px solid #dddddd;
   border-radius: 8px;
   font-size: 15px;
   box-sizing: border-box;
@@ -182,5 +193,31 @@ body {
 
 @keyframes slideDown {
   from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(0px); opacity: 1; }
+}
+
+.completed-badge {
+  display: inline-block;
+  background: #28a745;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.complete-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.complete-btn:hover {
+  opacity: 0.85;
 }
