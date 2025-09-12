@@ -9,8 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadTasks() {
     try {
       const res = await fetch("http://localhost:8081/tasks/gettasks", {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}` 
+        }
       });
+      if (res.status === 401) {
+        sessionStorage.removeItem("authToken");
+        window.location.href = "login.html";
+        return;
+      }
       const tasks = await res.json();
       renderTasks(tasks);
     } catch (err) {
@@ -20,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderTasks(tasks) {
     taskList.innerHTML = "";
-    if (tasks.length === 0) {
+    if (!tasks || tasks.length === 0) {
       taskList.innerHTML = "<p>No tasks yet. Create one!</p>";
       return;
     }
@@ -64,6 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify(newTask)
       });
+      if (res.status === 401) {
+        sessionStorage.removeItem("authToken");
+        window.location.href = "login.html";
+        return;
+      }
       if (res.ok) {
         modal.classList.remove("show");
         loadTasks();
