@@ -1,7 +1,7 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-  background: aliceblue;
+  background: beige;
   color: #333333;
   overflow-x: hidden;
 }
@@ -57,7 +57,7 @@ body {
 }
 
 .task-card {
-  background: white;
+  background: tan;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
