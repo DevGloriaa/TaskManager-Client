@@ -5,6 +5,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("password");
   const message = document.getElementById("message");
 
+const loader = document.getElementById('loader');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  loader.style.display = 'block'; 
+
+  try {
+    const response = await fetch('YOUR_API_URL', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+   
+  } catch (error) {
+    console.error(error);
+  } finally {
+    loader.style.display = 'none';
+  }
+});
 
   togglePasswordBtn.addEventListener("click", () => {
     if (passwordInput.type === "password") {
