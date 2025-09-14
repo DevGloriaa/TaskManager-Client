@@ -216,3 +216,29 @@ body {
   .fab { width: 45px; height: 45px; font-size: 24px; bottom: 15px; right: 15px; }
   .modal-content { width: 95%; padding: 15px; }
 }
+.completed-title {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.completed-text {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.delete-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: crimson;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: darkred;
+  opacity: 0.9;
+}

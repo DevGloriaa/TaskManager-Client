@@ -41,17 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = `task-card ${task.priority.toLowerCase()} ${task.completed ? "completed" : ""}`;
 
       card.innerHTML = `
-        <h3>${task.title}</h3>
-        <p>${task.description || ""}</p>
+        <h3 class="${task.completed ? "completed-title" : ""}">${task.title}</h3>
+        <p class="${task.completed ? "completed-text" : ""}">${task.description || ""}</p>
         <p><strong>Due:</strong> ${task.dueDate || "No date"}</p>
         <label>
           <input type="checkbox" class="complete-checkbox" data-id="${task.id}" ${task.completed ? "checked" : ""}>
           Completed
         </label>
+        ${task.completed ? `<button class="delete-btn" data-id="${task.id}">Delete</button>` : ""}
       `;
       taskList.appendChild(card);
     });
 
+    // Toggle completion
     document.querySelectorAll(".complete-checkbox").forEach(checkbox => {
       checkbox.addEventListener("change", async () => {
         const taskId = checkbox.getAttribute("data-id");
@@ -66,6 +68,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
+
+    // Delete completed task
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const taskId = btn.getAttribute("data-id");
+        try {
+          await fetch(`${API_BASE}/tasks/${taskId}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
+          });
+          loadTasks();
+        } catch (err) {
+          console.error("Error deleting task:", err);
+        }
+      });
+    });
   }
 
   function updateStats(tasks) {
@@ -74,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     taskStats.textContent = `Tasks Completed: ${completedCount} | Tasks Remaining: ${remainingCount}`;
   }
 
+  // Modal logic
   const modal = document.getElementById("taskModal");
   const openModal = document.getElementById("openModal");
   const closeModal = document.getElementById("closeModal");
@@ -84,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
   cancelBtn.onclick = () => modal.classList.remove("show");
   window.onclick = e => { if (e.target === modal) modal.classList.remove("show"); };
 
+  // Create new task
   document.getElementById("taskForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const newTask = {
@@ -112,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  
   document.getElementById("logoutBtn").addEventListener("click", () => {
     sessionStorage.removeItem("authToken");
     window.location.href = "login.html";
