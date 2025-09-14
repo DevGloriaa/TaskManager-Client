@@ -1,6 +1,6 @@
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
@@ -11,6 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, lightblue, navy);
+  padding: 10px;
 }
 
 .container {
@@ -64,7 +65,7 @@ input:focus {
   color: navy;
   cursor: pointer;
   font-size: 14px;
-  padding: 0px;
+  padding: 0;
 }
 
 .btn {
@@ -110,5 +111,49 @@ input:focus {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 20px;
+    max-width: 95%;
+  }
+  .container h2 {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+  input {
+    padding: 10px 45px 10px 10px;
+    font-size: 14px;
+  }
+  .btn {
+    padding: 11px;
+    font-size: 14px;
+  }
+  .show-password {
+    top: 34px;
+    font-size: 12px;
+  }
+  .login-link {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 28px;
+    max-width: 90%;
+  }
+  .container h2 {
+    font-size: 26px;
+  }
+  input {
+    padding: 11px 48px 11px 11px;
+    font-size: 15px;
+  }
+  .btn {
+    padding: 12px;
+    font-size: 15px;
   }
 }
