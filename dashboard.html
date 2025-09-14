@@ -2,23 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Optimus Task Manager</title>
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
   <header class="header">
-  <h1 class="brand">OPTIMUS <span class="slogan">— Your Optimum Task Manager</span></h1>
-  <button class="logout-btn" id="logoutBtn">Logout</button>
-</header>
+    <h1 class="brand">OPTIMUS <span class="slogan">— Your Optimum Task Manager</span></h1>
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </header>
 
   <main class="main-content">
+    <div class="task-stats-container">
+      <h2>Task Overview</h2>
+      <div id="taskStats" class="task-stats">Loading stats...</div>
+    </div>
+
     <h2>My Tasks</h2>
-    <div class="task-list" id="taskList"></div>
+    <div class="task-list" id="taskList">
+
+    </div>
   </main>
+
 
   <button class="fab" id="openModal">+</button>
 
+ 
   <div class="modal" id="taskModal">
     <div class="modal-content">
       <span class="close" id="closeModal">&times;</span>
@@ -40,18 +49,6 @@
 
         <label for="dueDate">Deadline</label>
         <input type="date" id="dueDate" required />
-
-        <label for="color">Card Color</label>
-        <select id="color" required>
-          <option value="white">White</option>
-          <option value="red">Red</option>
-          <option value="orange">Orange</option>
-          <option value="yellow">Yellow</option>
-          <option value="green">Green</option>
-          <option value="teal">Teal</option>
-          <option value="blue">Blue</option>
-          <option value="purple">Purple</option>
-        </select>
 
         <div class="form-actions">
           <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
