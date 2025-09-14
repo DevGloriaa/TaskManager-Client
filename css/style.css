@@ -28,7 +28,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 16px;
 }
 
@@ -51,7 +51,7 @@ header {
   list-style: none;
   display: flex;
   gap: 24px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .nav-links a {
@@ -88,9 +88,15 @@ header {
   margin-bottom: 32px;
 }
 
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .hero-buttons .btn {
   padding: 12px 24px;
-  margin: 0 8px;
   background: navy;     
   color: beige;
   border: none;
@@ -152,14 +158,6 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .nav-links {
-    flex-direction: column;
-    gap: 12px;
-  }
   .hero h2 {
     font-size: 28px;
   }
@@ -168,7 +166,6 @@ footer {
   }
   .hero-buttons .btn {
     padding: 10px 20px;
-    margin: 6px 0;
   }
 }
 
@@ -185,11 +182,17 @@ footer {
   .hero p {
     font-size: 14px;
   }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
   .hero-buttons .btn {
     width: 100%;
-    margin: 6px 0;
+    margin: 0;
   }
   .nav-links {
-    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
   }
 }
