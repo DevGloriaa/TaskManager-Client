@@ -173,3 +173,27 @@ input:focus {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+#message {
+  margin-bottom: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  text-align: center;
+}
+
+#message.show {
+  opacity: 1;
+}
+
+#message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+#message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
