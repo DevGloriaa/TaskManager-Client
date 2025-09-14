@@ -4,29 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const togglePasswordBtn = document.getElementById("togglePassword");
   const passwordInput = document.getElementById("password");
   const message = document.getElementById("message");
-
-const loader = document.getElementById('loader');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  loader.style.display = 'block'; 
-
-  try {
-    const response = await fetch('YOUR_API_URL', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-
-    const data = await response.json();
-   
-  } catch (error) {
-    console.error(error);
-  } finally {
-    loader.style.display = 'none';
-  }
-});
+  const loader = document.getElementById("loader");
 
   togglePasswordBtn.addEventListener("click", () => {
     if (passwordInput.type === "password") {
@@ -62,6 +40,8 @@ form.addEventListener('submit', async (e) => {
       return;
     }
 
+    loader.style.display = "block";
+
     try {
       const res = await fetch(`${API_BASE}/users/register`, {
         method: "POST",
@@ -74,7 +54,6 @@ form.addEventListener('submit', async (e) => {
       if (res.ok && data.success) {
         sessionStorage.setItem("emailForOTP", email);
         showMessage("Registration successful! Redirecting to OTP verification...", "success");
-
         setTimeout(() => {
           hideMessage();
           window.location.href = "verify-otp.html";
@@ -87,6 +66,8 @@ form.addEventListener('submit', async (e) => {
       console.error("Registration fetch error:", err);
       showMessage("Network error. Check console for details.", "error");
       setTimeout(hideMessage, 3000);
+    } finally {
+      loader.style.display = "none";
     }
   });
 });
