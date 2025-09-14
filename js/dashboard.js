@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function loadTasks() {
     try {
-      const res = await fetch("http://localhost:8081/tasks/gettasks", {
+      const res = await fetch("https://taskmanagerapi-1-142z.onrender.com/tasks/gettasks", {
         headers: { 
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}` 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", async () => {
         const taskId = btn.getAttribute("data-id");
         try {
-          const res = await fetch(`http://localhost:8081/tasks/${taskId}/complete`, {
+          const res = await fetch(`https://taskmanagerapi-1-142z.onrender.com/tasks/${taskId}/complete`, {
             method: "PATCH",
             headers: { Authorization: `Bearer ${token}` }
           });
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       dueDate: document.getElementById("dueDate").value
     };
     try {
-      const res = await fetch("http://localhost:8081/tasks/createtask", {
+      const res = await fetch("https://taskmanagerapi-1-142z.onrender.com/tasks/createtask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

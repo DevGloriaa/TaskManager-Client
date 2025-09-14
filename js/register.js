@@ -25,7 +25,7 @@ registerForm.addEventListener('submit', async (e) => {
   }
 
   try {
-    const res = await fetch('http://localhost:8081/users/register', {
+    const res = await fetch('https://taskmanagerapi-1-142z.onrender.com/users/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, email, password })
