@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error loading tasks:", err);
     }
   }
-
   function renderTasks(tasks) {
     taskList.innerHTML = "";
     if (!tasks || tasks.length === 0) {
@@ -41,19 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = `task-card ${task.priority.toLowerCase()} ${task.completed ? "completed" : ""}`;
 
       card.innerHTML = `
-        <h3 class="${task.completed ? "completed-title" : ""}">${task.title}</h3>
-        <p class="${task.completed ? "completed-text" : ""}">${task.description || ""}</p>
-        <p><strong>Due:</strong> ${task.dueDate || "No date"}</p>
+        <div class="task-content">
+          <h3>${task.title}</h3>
+          <p>${task.description || ""}</p>
+          <p><strong>Due:</strong> ${task.dueDate || "No date"}</p>
+        </div>
         <label>
           <input type="checkbox" class="complete-checkbox" data-id="${task.id}" ${task.completed ? "checked" : ""}>
           Completed
         </label>
         ${task.completed ? `<button class="delete-btn" data-id="${task.id}">Delete</button>` : ""}
       `;
+
       taskList.appendChild(card);
     });
-
-    // Toggle completion
     document.querySelectorAll(".complete-checkbox").forEach(checkbox => {
       checkbox.addEventListener("change", async () => {
         const taskId = checkbox.getAttribute("data-id");
@@ -62,23 +62,21 @@ document.addEventListener("DOMContentLoaded", () => {
             method: "PATCH",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
           });
-          loadTasks(); 
+          loadTasks();
         } catch (err) {
           console.error("Error toggling task completion:", err);
         }
       });
     });
-
-    // Delete completed task
     document.querySelectorAll(".delete-btn").forEach(btn => {
       btn.addEventListener("click", async () => {
         const taskId = btn.getAttribute("data-id");
         try {
-          await fetch(`${API_BASE}/tasks/${taskId}`, {
+          const res = await fetch(`${API_BASE}/tasks/${taskId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }
           });
-          loadTasks();
+          if (res.ok) loadTasks();
         } catch (err) {
           console.error("Error deleting task:", err);
         }
@@ -92,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     taskStats.textContent = `Tasks Completed: ${completedCount} | Tasks Remaining: ${remainingCount}`;
   }
 
-  // Modal logic
   const modal = document.getElementById("taskModal");
   const openModal = document.getElementById("openModal");
   const closeModal = document.getElementById("closeModal");
@@ -103,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
   cancelBtn.onclick = () => modal.classList.remove("show");
   window.onclick = e => { if (e.target === modal) modal.classList.remove("show"); };
 
-  // Create new task
   document.getElementById("taskForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const newTask = {
