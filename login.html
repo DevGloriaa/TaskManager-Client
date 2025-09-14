@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Task Manager</title>
   <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
   <div class="container">
     <h2>Login</h2>
+    <div id="loader" class="loader"></div>
     <div id="message"></div>
     <form id="loginForm">
       <div class="form-group">
@@ -25,10 +26,11 @@
       <button type="submit" class="btn">Login</button>
     </form>
 
-    <div class="register-link">
+    <div class="login-link">
       Don't have an account? <a href="register.html">Register</a>
     </div>
   </div>
+
   <script src="js/login.js"></script>
 </body>
 </html>

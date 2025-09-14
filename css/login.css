@@ -22,17 +22,18 @@ body {
   max-width: 380px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.6s ease-in-out;
+  text-align: center;
 }
 
 .container h2 {
-  text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   color: navy;
 }
 
 .form-group {
   margin-bottom: 16px;
   position: relative;
+  text-align: left;
 }
 
 label {
@@ -44,11 +45,10 @@ label {
 
 input {
   width: 100%;
-  padding: 12px;
+  padding: 12px 50px 12px 12px;
   border: 1px solid navy;
   border-radius: 8px;
   font-size: 16px;
-  transition: border 0.3s;
 }
 
 input:focus {
@@ -86,32 +86,48 @@ input:focus {
   color: white;
 }
 
-.register-link {
+.login-link {
   text-align: center;
   margin-top: 16px;
   font-size: 14px;
   color: navy;
 }
 
-.register-link a {
+.login-link a {
   color: navy;
   text-decoration: none;
   font-weight: bold;
 }
 
-.register-link a:hover {
+.login-link a:hover {
   text-decoration: underline;
 }
 
+.loader {
+  display: none;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid navy;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 #message {
-  margin-top: 15px;
+  margin-bottom: 16px;
   padding: 10px;
-  text-align: center;
-  font-weight: bold;
   border-radius: 5px;
+  font-weight: bold;
   display: none;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+  text-align: center;
 }
 
 #message.show {
@@ -144,28 +160,23 @@ input:focus {
     padding: 20px;
     max-width: 95%;
   }
-
   .container h2 {
     font-size: 22px;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
-
   input {
-    padding: 10px;
+    padding: 10px 45px 10px 10px;
     font-size: 14px;
   }
-
   .btn {
     padding: 11px;
     font-size: 14px;
   }
-
   .show-password {
     top: 34px;
     font-size: 12px;
   }
-
-  .register-link {
+  .login-link {
     font-size: 12px;
   }
 }
@@ -175,16 +186,13 @@ input:focus {
     padding: 28px;
     max-width: 90%;
   }
-
   .container h2 {
     font-size: 26px;
   }
-
   input {
-    padding: 11px;
+    padding: 11px 48px 11px 11px;
     font-size: 15px;
   }
-
   .btn {
     padding: 12px;
     font-size: 15px;

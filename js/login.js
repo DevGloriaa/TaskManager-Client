@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("password");
   const loginForm = document.getElementById("loginForm");
   const message = document.getElementById("message");
+  const loader = document.getElementById("loader");
   const API_BASE = "https://taskmanagerapi-1-142z.onrender.com";
-
 
   togglePasswordBtn.addEventListener("click", () => {
     if (passwordInput.type === "password") {
@@ -32,12 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const password = passwordInput.value.trim();
 
     if (!email || !password) {
       showMessage("Both email and password are required.", "error");
       return;
     }
+
+    loader.style.display = "block";
 
     try {
       const res = await fetch(`${API_BASE}/users/login`, {
@@ -45,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
+
+      loader.style.display = "none";
 
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({ error: "Login failed" }));
@@ -58,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data.token) {
         sessionStorage.setItem("authToken", data.token);
         showMessage("Login successful! Redirecting...", "success");
-
         setTimeout(() => {
           hideMessage();
           window.location.href = "dashboard.html";
@@ -68,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(hideMessage, 3000);
       }
     } catch (error) {
+      loader.style.display = "none";
       console.error("Login error:", error);
       showMessage("Network error. Check console for details.", "error");
       setTimeout(hideMessage, 3000);
