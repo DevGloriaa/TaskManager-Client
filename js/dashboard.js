@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = sessionStorage.getItem("authToken");
   const taskList = document.getElementById("taskList");
 
-
   if (!token) {
     window.location.href = "login.html";
   }
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (res.status === 401) {
-        console.error("Unauthorized: Redirecting to login.");
         sessionStorage.removeItem("authToken");
         window.location.href = "login.html";
         return;
@@ -33,15 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderTasks(tasks) {
     taskList.innerHTML = "";
-
     if (!tasks || tasks.length === 0) {
       taskList.innerHTML = "<p>No tasks yet. Create one!</p>";
       return;
     }
-
     tasks.forEach(task => {
       const card = document.createElement("div");
       card.className = "task-card";
+      card.style.backgroundColor = task.color || "#ffffff";
       card.innerHTML = `
         <h3>${task.title}</h3>
         <p>${task.description || ""}</p>
@@ -62,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "login.html";
           return;
         }
-
         try {
           const res = await fetch(`${API_BASE}/tasks/${taskId}/complete`, {
             method: "PATCH",
@@ -71,13 +67,11 @@ document.addEventListener("DOMContentLoaded", () => {
               Authorization: `Bearer ${token}`
             }
           });
-
           if (res.status === 401) {
-            console.error("Unauthorized token.");
             sessionStorage.removeItem("authToken");
             window.location.href = "login.html";
           } else if (res.status === 403) {
-            console.error("Forbidden: You can only complete your own tasks.");
+            console.error("Forbidden");
           } else if (res.ok) {
             loadTasks(); 
           } else {
@@ -102,19 +96,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("taskForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-
     const newTask = {
       title: document.getElementById("title").value,
       description: document.getElementById("description").value,
       priority: document.getElementById("priority").value,
-      dueDate: document.getElementById("dueDate").value
+      dueDate: document.getElementById("dueDate").value,
+      color: document.getElementById("color").value
     };
-
     if (!token) {
       window.location.href = "login.html";
       return;
     }
-
     try {
       const res = await fetch(`${API_BASE}/tasks/createtask`, {
         method: "POST",
@@ -124,13 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify(newTask)
       });
-
       if (res.status === 401) {
         sessionStorage.removeItem("authToken");
         window.location.href = "login.html";
         return;
       }
-
       if (res.ok) {
         modal.classList.remove("show");
         loadTasks();
