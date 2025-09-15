@@ -12,12 +12,11 @@ body {
   overflow-x: hidden;
 }
 
-
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; 
-  padding: 1rem 2rem;
+  align-items: center; 
+  padding: 0.75rem 1.5rem;
   background: orange;
   color: white;
   position: sticky;
@@ -28,10 +27,8 @@ body {
 
 .logo-box {
   display: flex;
-  flex-direction: column; 
-  justify-content: flex-start; 
-  align-items: flex-start; 
-  gap: 0.2rem; 
+  flex-direction: column;
+  justify-content: center;
 }
 
 .logo {
@@ -40,18 +37,11 @@ body {
   letter-spacing: 1px;
   text-align: left;
 }
-
-.motto {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  text-align: left;
-}
-
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1rem;
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap;
   align-items: center;
 }
 
@@ -60,9 +50,13 @@ body {
   color: white;
   font-weight: 500;
   transition: color 0.3s ease;
+  padding: 0.3rem 0.5rem;
 }
 
-.nav-links a:hover,
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
 .nav-links a.active {
   color: lightyellow;
 }
@@ -134,7 +128,6 @@ body {
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
-
 .features {
   padding: 3rem 1.5rem;
   background: papayawhip;
@@ -178,7 +171,6 @@ body {
   color: orange;
 }
 
-
 .footer {
   background: orange;
   color: white;
@@ -197,7 +189,6 @@ body {
   text-decoration: underline;
 }
 
-
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -209,7 +200,6 @@ body {
   transform: translateY(0);
 }
 
-/* Media Queries */
 @media (min-width: 768px) {
   .hero {
     flex-direction: row;
@@ -236,11 +226,7 @@ body {
 
 @media (max-width: 767px) {
   .logo {
-    font-size: 1.4rem;
-  }
-
-  .motto {
-    font-size: 0.8rem;
+    font-size: 1.5rem;
   }
 
   .hero-content h2 {
@@ -252,22 +238,26 @@ body {
     max-width: 90%;
   }
 
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .feature-card {
     padding: 1.5rem 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  .logo {
+    font-size: 1.4rem;
+  }
+
   .hero-content h2 {
     font-size: 6vw;
   }
 
   .hero-content p {
     font-size: 4vw;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 0.75rem;
   }
 }
