@@ -227,7 +227,7 @@ body {
   transition: 0.2s;
 }
 .delete-btn:hover { background: darkred; opacity: 0.9; }
-.task-card.completed .delete-btn {
+.task-card.completed .delete-btn span {
   text-decoration: none !important;
-  opacity: 1;
+  color: inherit;
 }

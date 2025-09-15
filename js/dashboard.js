@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error loading tasks:", err);
     }
   }
+
   function renderTasks(tasks) {
     taskList.innerHTML = "";
     if (!tasks || tasks.length === 0) {
@@ -49,11 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
           <input type="checkbox" class="complete-checkbox" data-id="${task.id}" ${task.completed ? "checked" : ""}>
           Completed
         </label>
-        ${task.completed ? `<button class="delete-btn" data-id="${task.id}">Delete</button>` : ""}
       `;
+
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.className = "delete-btn";
+      deleteBtn.setAttribute("data-id", task.id);
+      deleteBtn.innerHTML = "<span>Delete</span>";
+      card.appendChild(deleteBtn);
 
       taskList.appendChild(card);
     });
+
     document.querySelectorAll(".complete-checkbox").forEach(checkbox => {
       checkbox.addEventListener("change", async () => {
         const taskId = checkbox.getAttribute("data-id");
@@ -68,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
+
     document.querySelectorAll(".delete-btn").forEach(btn => {
       btn.addEventListener("click", async () => {
         const taskId = btn.getAttribute("data-id");
