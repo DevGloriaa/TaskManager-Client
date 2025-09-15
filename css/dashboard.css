@@ -82,19 +82,49 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.task-card.low { background: tan; color: #222; }
-.task-card.medium { background: teal; color: white; }
-.task-card.high { background: blue; color: white; }
+.task-card.low { background: peachpuff; color: #222; }
+.task-card.medium { background: coral; color: white; }
+.task-card.high { background: tomato; color: white; }
 
 .task-card.completed {
   opacity: 0.7;
-  text-decoration: line-through;
+}
+
+.task-content {
+  margin-bottom: 10px;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .complete-checkbox {
   transform: scale(1.2);
-  margin-right: 8px;
   cursor: pointer;
+}
+
+.delete-btn {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 6px;
+  background: crimson;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+  width: auto;
+}
+.delete-btn:hover {
+  background: darkred;
+  opacity: 0.9;
+}
+
+.task-card.completed .delete-btn,
+.task-card.completed .delete-btn span {
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .fab {
@@ -210,24 +240,4 @@ body {
   .task-list { grid-template-columns: 1fr; gap: 12px; }
   .fab { width: 45px; height: 45px; font-size: 24px; bottom: 15px; right: 15px; }
   .modal-content { width: 95%; padding: 15px; }
-}
-
-.completed-title { text-decoration: line-through; color: gray; }
-.completed-text { text-decoration: line-through; color: gray; }
-
-.delete-btn {
-  margin-top: 8px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  background: crimson;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.delete-btn:hover { background: darkred; opacity: 0.9; }
-.task-card.completed .delete-btn span {
-  text-decoration: none !important;
-  color: inherit;
 }

@@ -40,25 +40,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("div");
       card.className = `task-card ${task.priority.toLowerCase()} ${task.completed ? "completed" : ""}`;
 
-      card.innerHTML = `
-        <div class="task-content">
-          <h3>${task.title}</h3>
-          <p>${task.description || ""}</p>
-          <p><strong>Due:</strong> ${task.dueDate || "No date"}</p>
-        </div>
-        <label>
-          <input type="checkbox" class="complete-checkbox" data-id="${task.id}" ${task.completed ? "checked" : ""}>
-          Completed
-        </label>
+      const taskContent = document.createElement("div");
+      taskContent.className = "task-content";
+      taskContent.innerHTML = `
+        <h3>${task.title}</h3>
+        <p>${task.description || ""}</p>
+        <p><strong>Due:</strong> ${task.dueDate || "No date"}</p>
       `;
+      card.appendChild(taskContent);
 
+      const actions = document.createElement("div");
+      actions.className = "task-actions";
+
+      const checkboxLabel = document.createElement("label");
+      checkboxLabel.innerHTML = `
+        <input type="checkbox" class="complete-checkbox" data-id="${task.id}" ${task.completed ? "checked" : ""}>
+        Completed
+      `;
+      actions.appendChild(checkboxLabel);
 
       const deleteBtn = document.createElement("button");
       deleteBtn.className = "delete-btn";
       deleteBtn.setAttribute("data-id", task.id);
       deleteBtn.innerHTML = "<span>Delete</span>";
-      card.appendChild(deleteBtn);
+      actions.appendChild(deleteBtn);
 
+      card.appendChild(actions);
       taskList.appendChild(card);
     });
 
