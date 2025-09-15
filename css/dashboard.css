@@ -84,7 +84,7 @@ body {
 
 .task-card.low { background: tan; color: #222; }
 .task-card.medium { background: teal; color: white; }
-.task-card.high { background: navy; color: white; }
+.task-card.high { background: blue; color: white; }
 
 .task-card.completed {
   opacity: 0.7;
@@ -228,6 +228,6 @@ body {
 }
 .delete-btn:hover { background: darkred; opacity: 0.9; }
 .task-card.completed .delete-btn {
-  text-decoration: none;
+  text-decoration: none !important;
   opacity: 1;
 }
