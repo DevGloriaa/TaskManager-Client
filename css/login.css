@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, goldenrod, papayawhip);
+  background: papayawhip;
   padding: 10px;
 }
 
@@ -27,7 +27,7 @@ body {
 
 .container h2 {
   margin-bottom: 16px;
-  color: goldenrod;
+  color: black;
 }
 
 .form-group {
@@ -40,7 +40,7 @@ label {
   display: block;
   margin-bottom: 8px;
   font-size: 14px;
-  color: goldenrod;
+  color: black;
 }
 
 input {
@@ -62,7 +62,7 @@ input:focus {
   top: 38px;
   background: none;
   border: none;
-  color: goldenrod;
+  color: black;
   cursor: pointer;
   font-size: 14px;
   padding: 0;
