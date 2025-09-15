@@ -10,7 +10,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, lightblue, papayawhip);
+  background: linear-gradient(135deg, goldenrod papayawhip);
   padding: 10px;
 }
 
@@ -27,7 +27,7 @@ body {
 
 .container h2 {
   margin-bottom: 16px;
-  color: navy;
+  color: goldenrod;
 }
 
 .form-group {
@@ -39,14 +39,14 @@ label {
   display: block;
   margin-bottom: 8px;
   font-size: 14px;
-  color: navy;
+  color: black;
   text-align: left;
 }
 
 input {
   width: 100%;
   padding: 12px 50px 12px 12px;
-  border: 1px solid navy;
+  border: 1px solid black;
   border-radius: 8px;
   font-size: 16px;
 }
@@ -62,7 +62,7 @@ input:focus {
   top: 38px;
   background: none;
   border: none;
-  color: navy;
+  color: goldenrod;
   cursor: pointer;
   font-size: 14px;
   padding: 0;
@@ -70,7 +70,7 @@ input:focus {
 
 .btn {
   width: 100%;
-  background: navy;
+  background: goldenrod;
   color: beige;
   padding: 13px;
   border: none;
@@ -90,11 +90,11 @@ input:focus {
   text-align: center;
   margin-top: 16px;
   font-size: 14px;
-  color: navy;
+  color: black;
 }
 
 .login-link a {
-  color: navy;
+  color: black;
   text-decoration: none;
   font-weight: bold;
 }
@@ -161,7 +161,7 @@ input:focus {
 .loader {
   display: none;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid navy;
+  border-top: 4px solid black;
   border-radius: 50%;
   width: 40px;
   height: 40px;
