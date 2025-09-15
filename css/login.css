@@ -94,7 +94,7 @@ input:focus {
 }
 
 .login-link a {
-  color: gold;
+  color: black;
   text-decoration: none;
   font-weight: bold;
 }
