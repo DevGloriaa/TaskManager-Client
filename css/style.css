@@ -12,7 +12,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -23,36 +22,34 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-wrap: nowrap; 
 }
 
 .logo-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: bold;
   letter-spacing: 1px;
-  text-align: center;
+  text-align: left;
 }
 
 .motto {
-  font-size: 1rem;
+  font-size: 0.9rem;
   opacity: 0.8;
-  text-align: center;
+  text-align: left;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+  flex-wrap: nowrap; /* Keep links in one line */
+  align-items: center;
 }
 
 .nav-links a {
@@ -134,7 +131,6 @@ body {
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
-/* Features Section */
 .features {
   padding: 3rem 1.5rem;
   background: papayawhip;
@@ -197,6 +193,7 @@ body {
   text-decoration: underline;
 }
 
+
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -207,6 +204,7 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 @media (min-width: 768px) {
   .hero {
@@ -234,16 +232,11 @@ body {
 
 @media (max-width: 767px) {
   .logo {
-    font-size: 5vw;
+    font-size: 1.4rem;
   }
 
   .motto {
-    font-size: 3vw;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 0.5rem;
+    font-size: 0.8rem;
   }
 
   .hero-content h2 {
@@ -261,14 +254,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .logo {
-    font-size: 6vw;
-  }
-
-  .motto {
-    font-size: 4vw;
-  }
-
   .hero-content h2 {
     font-size: 6vw;
   }
