@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const taskList = document.getElementById("taskList");
   const taskStats = document.getElementById("taskStats");
 
-  if (!token) {
-    window.location.href = "login.html";
-  }
+  if (!token) window.location.href = "login.html";
+
+  let editingTaskId = null;
 
   async function loadTasks() {
     try {
@@ -48,6 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>Due:</strong> ${task.dueDate || "No date"}</p>
       `;
       card.appendChild(taskContent);
+
+      const editBtn = document.createElement("button");
+      editBtn.className = "edit-btn";
+      editBtn.textContent = "Edit";
+      editBtn.addEventListener("click", () => openEditModal(task));
+      card.appendChild(editBtn);
 
       const actions = document.createElement("div");
       actions.className = "task-actions";
@@ -110,37 +116,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const openModal = document.getElementById("openModal");
   const closeModal = document.getElementById("closeModal");
   const cancelBtn = document.getElementById("cancelBtn");
+  const taskForm = document.getElementById("taskForm");
 
-  openModal.onclick = () => modal.classList.add("show");
+  openModal.onclick = () => {
+    editingTaskId = null;
+    taskForm.reset();
+    modal.classList.add("show");
+  };
   closeModal.onclick = () => modal.classList.remove("show");
   cancelBtn.onclick = () => modal.classList.remove("show");
   window.onclick = e => { if (e.target === modal) modal.classList.remove("show"); };
 
-  document.getElementById("taskForm").addEventListener("submit", async (e) => {
+  function openEditModal(task) {
+    editingTaskId = task.id;
+    document.getElementById("title").value = task.title;
+    document.getElementById("description").value = task.description || "";
+    document.getElementById("priority").value = task.priority.toUpperCase();
+    document.getElementById("dueDate").value = task.dueDate || "";
+    modal.classList.add("show");
+  }
+
+  taskForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const newTask = {
+    const taskData = {
       title: document.getElementById("title").value,
       description: document.getElementById("description").value,
       priority: document.getElementById("priority").value,
       dueDate: document.getElementById("dueDate").value
     };
+
     try {
-      const res = await fetch(`${API_BASE}/tasks/createtask`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify(newTask)
-      });
-      if (res.status === 401) {
-        sessionStorage.removeItem("authToken");
-        window.location.href = "login.html";
-        return;
+      if (editingTaskId) {
+        const res = await fetch(`${API_BASE}/tasks/${editingTaskId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+          body: JSON.stringify(taskData)
+        });
+        if (!res.ok) console.error("Error updating task");
+      } else {
+        const res = await fetch(`${API_BASE}/tasks/createtask`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+          body: JSON.stringify(taskData)
+        });
+        if (!res.ok) console.error("Error creating task");
       }
-      if (res.ok) {
-        modal.classList.remove("show");
-        loadTasks();
-      } else console.error("Error creating task");
+      modal.classList.remove("show");
+      loadTasks();
     } catch (err) {
-      console.error("Error creating task:", err);
+      console.error("Error submitting task:", err);
     }
   });
 

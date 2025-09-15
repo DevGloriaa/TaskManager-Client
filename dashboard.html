@@ -20,8 +20,8 @@
 
     <h2>My Tasks</h2>
     <div class="task-list" id="taskList">
-   
       <div class="task-card completed high">
+        <button class="edit-btn">Edit</button>
         <div class="task-content">
           <h3 class="task-title">Finish Project</h3>
           <p class="task-desc">Complete the dashboard module</p>
@@ -64,6 +64,32 @@
         <div class="form-actions">
           <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
           <button type="submit" class="btn-save">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="editTaskModal">
+    <div class="modal-content">
+      <span class="close" id="closeEditModal">&times;</span>
+      <h2>Edit Task</h2>
+      <form id="editTaskForm">
+        <label for="editTitle">Title</label>
+        <input type="text" id="editTitle" placeholder="Task Title" required />
+
+        <label for="editDescription">Description</label>
+        <textarea id="editDescription" placeholder="Task Description"></textarea>
+
+        <label for="editPriority">Level of Priority</label>
+        <select id="editPriority" required>
+          <option value="LOW">Low</option>
+          <option value="MEDIUM">Medium</option>
+          <option value="HIGH">High</option>
+        </select>
+
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" id="cancelEditBtn">Cancel</button>
+          <button type="submit" class="btn-save">Save Changes</button>
         </div>
       </form>
     </div>
