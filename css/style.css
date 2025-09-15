@@ -9,6 +9,7 @@ html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
 }
 
 main {
@@ -22,13 +23,17 @@ header {
   color: beige;         
   padding: 16px 32px;
   font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s ease;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 16px;
 }
 
@@ -45,13 +50,17 @@ header {
   letter-spacing: 2px;
   color: beige;
   text-transform: uppercase;
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 24px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -59,11 +68,21 @@ header {
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
+  position: relative;
 }
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: gold;
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: gold;
+  transition: width 0.3s;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
 }
 
 .hero {
@@ -72,20 +91,54 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: beige;  
+  background: #fdf5e6;  
   color: navy;
   text-align: center;
-  padding: 32px;
+  padding: 48px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at top left, rgba(255,223,186,0.2), transparent);
+  top: -50%;
+  left: -50%;
+  animation: floatBG 15s linear infinite;
+  z-index: 0;
+}
+
+@keyframes floatBG {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .hero h2 {
-  font-size: 40px;
+  font-size: 42px;
   margin-bottom: 16px;
+  font-weight: 800;
 }
 
 .hero p {
   font-size: 20px;
   margin-bottom: 32px;
+  line-height: 1.6;
+  max-width: 650px;
 }
 
 .hero-buttons {
@@ -96,19 +149,20 @@ header {
 }
 
 .hero-buttons .btn {
-  padding: 12px 24px;
+  padding: 14px 28px;
   background: navy;     
   color: beige;
   border: none;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
-
 .hero-buttons .btn:hover {
   background: goldenrod;
   color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .btn-secondary {
@@ -116,18 +170,21 @@ header {
   border: 2px solid navy;
   color: navy;
 }
-
 .btn-secondary:hover {
   background: navy;
   color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 footer {
   text-align: center;
-  padding: 16px;
+  padding: 20px;
   background: linear-gradient(to right, navy, midnightblue); 
   color: burlywood;
   margin-top: auto;
+  font-size: 14px;
+  transition: background 0.3s ease;
 }
 
 .tagline {
@@ -149,50 +206,73 @@ footer {
 }
 
 @media screen and (max-width: 1024px) {
-  .hero h2 {
-    font-size: 32px;
-  }
-  .hero p {
-    font-size: 18px;
-  }
+  .hero h2 { font-size: 36px; }
+  .hero p { font-size: 18px; }
 }
 
 @media screen and (max-width: 768px) {
-  .hero h2 {
-    font-size: 28px;
-  }
-  .hero p {
-    font-size: 16px;
-  }
-  .hero-buttons .btn {
-    padding: 10px 20px;
-  }
+  .hero h2 { font-size: 30px; }
+  .hero p { font-size: 16px; }
+  .hero-buttons .btn { padding: 12px 24px; }
 }
 
 @media screen and (max-width: 480px) {
-  header {
-    padding: 12px 16px;
-  }
-  .hero {
-    padding: 16px;
-  }
-  .hero h2 {
-    font-size: 24px;
-  }
-  .hero p {
-    font-size: 14px;
-  }
-  .hero-buttons {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .hero-buttons .btn {
-    width: 100%;
-    margin: 0;
-  }
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
+  header { padding: 12px 16px; }
+  .hero { padding: 24px 16px; }
+  .hero h2 { font-size: 24px; }
+  .hero p { font-size: 14px; }
+  .hero-buttons { flex-direction: column; gap: 10px; }
+  .hero-buttons .btn { width: 100%; margin: 0; }
+  .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.hero-image img {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.hero-image.appear img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.feature-card {
+  background: #fff9f0;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.feature-card img {
+  width: 60px;
+  margin-bottom: 12px;
+}
+
+.feature-card.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.feature-card.fade-in.appear {
+  opacity: 1;
+  transform: translateY(0);
 }

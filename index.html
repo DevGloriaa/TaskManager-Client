@@ -2,24 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimus Task Manager</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
- <header>
-  <nav class="navbar">
-    <div class="logo-box">
-      <h1 class="logo">Optimus</h1>
-      <p class="motto">Your Optimum Task Manager</p>
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="login.html">Login</a></li>
-      <li><a href="register.html">Register</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <nav class="navbar">
+      <div class="logo-box">
+        <h1 class="logo">Optimus</h1>
+        <p class="motto">Your Optimum Task Manager</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <section class="hero">
     <div class="hero-content">
       <span class="tagline">✨ Your Personal Productivity Hub ✨</span>
@@ -30,16 +31,41 @@
         Your productivity journey starts here.
       </p>
       <div class="hero-buttons">
-        <a href="register.html" class="btn">Get Started Free</a>
+        <a href="register.html" class="btn cta-btn">Get Started Free</a>
         <a href="login.html" class="btn btn-secondary">Already a Member?</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="images/dashboard-sample.png" alt="Optimus Dashboard">
+    </div>
+  </section>
+
+  <section class="features">
+    <h3>Why Choose Optimus?</h3>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <img src="images/deadline-icon.png" alt="Deadline">
+        <h4>Track Deadlines</h4>
+        <p>Stay on top of tasks with reminders and notifications.</p>
+      </div>
+      <div class="feature-card">
+        <img src="images/priority-icon.png" alt="Priority">
+        <h4>Set Priorities</h4>
+        <p>Organize tasks by importance and manage your time efficiently.</p>
+      </div>
+      <div class="feature-card">
+        <img src="images/collaboration-icon.png" alt="Collaboration">
+        <h4>Collaborate</h4>
+        <p>Work seamlessly with teammates or classmates.</p>
       </div>
     </div>
   </section>
 
- 
-  <footer>
-    <p>&copy; 2025 Task Manager. All rights reserved.</p>
+  <footer class="footer">
+    <p>&copy; 2025 Optimus Task Manager | <a href="#">Privacy Policy</a> | <a href="#">Contact</a></p>
   </footer>
+
   <script src="js/utils.js"></script>
+  <script src="js/landing.js"></script>
 </body>
 </html>
