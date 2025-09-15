@@ -12,6 +12,7 @@ body {
   overflow-x: hidden;
 }
 
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -23,11 +24,11 @@ body {
   top: 0;
   z-index: 1000;
   flex-wrap: nowrap;
+  gap: 2rem; 
 }
 
 .logo-box {
   display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 
@@ -37,12 +38,14 @@ body {
   letter-spacing: 1px;
   text-align: left;
 }
+
 .nav-links {
   list-style: none;
   display: flex;
   gap: 1rem;
   flex-wrap: nowrap;
   align-items: center;
+  margin-left: auto; 
 }
 
 .nav-links a {
@@ -60,7 +63,6 @@ body {
 .nav-links a.active {
   color: lightyellow;
 }
-
 .hero {
   display: flex;
   flex-direction: column-reverse;
