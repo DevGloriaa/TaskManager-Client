@@ -82,9 +82,9 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.task-card.low { background: peachpuff; color: #222; }
-.task-card.medium { background: coral; color: white; }
-.task-card.high { background: tomato; color: white; }
+.task-card.low { background: #6BCB77; color: #222; }
+.task-card.medium { background: #FFD93D; color: #222; }
+.task-card.high { background: #FF6B6B; color: #222; }
 
 .task-card.completed {
   opacity: 0.7;
