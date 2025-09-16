@@ -10,7 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, lightblue, navy);
+    background: papayawhip
 }
 
 .container {
@@ -24,7 +24,7 @@ body {
 }
 
 .container h2 {
-    color: navy;
+    color: black;
     margin-bottom: 16px;
 }
 
@@ -48,7 +48,7 @@ label {
 input {
     width: 100%;
     padding: 12px;
-    border: 1px solid navy;
+    border: 1px solid black;
     border-radius: 8px;
     font-size: 16px;
 }
@@ -61,7 +61,7 @@ input:focus {
 .btn {
     width: 100%;
     padding: 12px;
-    background: navy;
+    background: goldenrod;
     color: beige;
     border: none;
     border-radius: 8px;
@@ -78,7 +78,7 @@ input:focus {
 .resend {
     margin-top: 16px;
     font-size: 14px;
-    color: navy;
+    color: black;
 }
 
 #resendOtp {
@@ -93,5 +93,5 @@ input:focus {
 #message {
     margin-top: 16px;
     font-size: 14px;
-    color: green;
+    color: black;
 }

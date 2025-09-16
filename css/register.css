@@ -190,7 +190,7 @@ input:focus {
 
 #message.success {
   background-color: #d4edda;
-  color: #155724;
+  color: black;
 }
 
 #message.error {
