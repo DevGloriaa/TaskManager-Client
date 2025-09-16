@@ -87,7 +87,7 @@ input:focus {
     font-weight: bold;
 }
 #resendOtp:hover{
-  color:black;
+  text-decoration: underline;
 }
 
 #message {
